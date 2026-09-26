@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.log
+.flow-crm-dev-data/
+*.tsbuildinfo
+flow.crm-data/
+flow.crm-portable.json
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
