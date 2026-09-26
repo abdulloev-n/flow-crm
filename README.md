@@ -1,26 +1,26 @@
 # flow.crm
 
-Локальная CRM для дизайнера-фрилансера. Интерфейс приложения на английском. В репозитории находятся исходный код и инструкция. Установщик Windows и портативная версия доступны в разделе Releases.
+flow.crm is a local Windows CRM for freelance designers. The interface is in English. This repository contains the source code and build instructions. Download the Windows installer or portable executable from [Releases](https://github.com/abdulloev-n/flow-crm/releases).
 
-## Готовые файлы
+## Downloads
 
-- `flow.crm-Setup-1.0.0-x64.exe` — мастер установки для Windows x64. В конце можно отметить запуск программы и создание ярлыка на рабочем столе.
-- `flow.crm-Portable-1.0.0-x64.exe` — запуск без установки. Держите файл в папке, где приложение может создавать данные.
-- `flow-crm-source.zip` — исходный проект без `node_modules`.
+- `flow.crm-Setup-1.0.0-x64.exe`: Windows x64 installer with a setup wizard. At the end, you can launch the app and create a desktop shortcut.
+- `flow.crm-Portable-1.0.0-x64.exe`: runs without installation. Keep the file in a folder where the app can write data.
+- `flow-crm-source.zip`: source files without `node_modules`.
 
-## Где находятся данные
+## Data storage
 
-Установленная версия сохраняет базу SQLite в `%LOCALAPPDATA%\flow.crm\flow.crm.sqlite`. Расположение фиксировано. Переустановка приложения не удаляет эту папку.
+The installed app stores its SQLite database at `%LOCALAPPDATA%\flow.crm\flow.crm.sqlite`. You cannot change this location. Reinstalling the app does not delete the data folder.
 
-Портативная версия создаёт папку `flow.crm-data` рядом со своим `.exe`. Вы можете сменить её расположение в **Settings → Data & Storage → Change location**. После смены приложение перезапустится. Если вы переносите портативный `.exe` на другой компьютер, скопируйте вместе с ним папку данных или импортируйте резервную копию.
+The portable app creates a `flow.crm-data` folder beside its `.exe`. You can change the location in **Settings → Data & Storage → Change location**. The app restarts after the change. When you move the portable executable to another computer, copy its data folder too or import a backup.
 
-В **Settings → Data & Storage** можно открыть папку данных, экспортировать резервную копию и импортировать её. Перед импортом приложение сохраняет копию текущей базы в той же папке.
+In **Settings → Data & Storage**, you can open the data folder, export a backup, and import one. Before an import, the app saves a copy of the current database in the same folder.
 
-## Сборка из исходников
+## Build from source
 
-1. Установите актуальную LTS-версию Node.js с [nodejs.org](https://nodejs.org/).
-2. Распакуйте `flow-crm-source.zip` в папку без ограничений на запись.
-3. Откройте PowerShell в этой папке и выполните:
+1. Install a current Node.js LTS release from [nodejs.org](https://nodejs.org/).
+2. Extract `flow-crm-source.zip` to a writable folder, or clone this repository.
+3. Open PowerShell in that folder and run:
 
    ```powershell
    npm ci
@@ -28,20 +28,20 @@
    npm run dist
    ```
 
-4. Установщик и портативный файл появятся на уровень выше папки исходников. Для режима разработки используйте `npm run dev`.
+The installer and portable executable appear one directory above the source folder. Run `npm run dev` for development.
 
-## Работа с CRM
+## App sections
 
-- **Today** показывает задачи с ближайшим сроком, ожидание ответа клиента и платежи.
-- **All Tasks** собирает задачи всех проектов и фильтры.
-- **Projects** содержит доску, список задач и сведения о проекте.
-- **Clients** хранит контакты и связанные проекты.
-- **Finances** хранит бюджеты и полученные или ожидаемые платежи.
-- **Archive** позволяет вернуть завершённые проекты.
-- **Settings** управляет темой, плотностью интерфейса, напоминаниями и резервными копиями.
+- **Today** shows upcoming tasks, client replies, and payments.
+- **All Tasks** brings tasks from every project into one filtered view.
+- **Projects** contains the project board, task list, and project details.
+- **Clients** stores contacts and linked projects.
+- **Finances** tracks budgets and received or expected payments.
+- **Archive** lets you restore completed projects.
+- **Settings** controls appearance, interface density, reminders, and backups.
 
-`Ctrl+K` открывает поиск, `N` создаёт задачу, `/` открывает поиск, `Esc` закрывает текущее окно.
+Press `Ctrl+K` or `/` to search, `N` to create a task, and `Esc` to close the current dialog.
 
-## Замечание о подписи
+## Code signing
 
-У сборки нет сертификата подписи издателя. Windows может показать предупреждение о неизвестном издателе. Для распространения другим пользователям потребуется подписать установщик и портативный файл своим сертификатом.
+These builds are unsigned. Windows may show an unknown publisher warning. Sign both executables with your own code signing certificate before distributing them to other users.
